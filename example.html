@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Rev - NP2 Calculator</title>
+    <style>
+        h3{
+            margin-top:15px;
+            margin-left:30px;
+            margin-bottom:10px;
+        }
+
+        p {
+            margin:5px;
+            margin-left:40px;
+        }
+
+        fieldset{
+            border:3px ridge grey;
+            padding-bottom:20px;
+            margin:20px;
+        }
+            fieldset legend{
+                font-size:25px;
+                font-weight:bolder;
+                padding-left:10px;
+                padding-right:10px;
+            }
+        input[type="number"], input[type="text"]{
+            width:75px;
+            text-align:right;
+        }
+        input.error{
+            border:2px ridge red;
+        }
+        hr{
+            width:300px;
+            margin-left:30px;
+        }
+        label{
+            padding-left: 10px;
+            color:red;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NP2 Calculator</h1>
+    </header>
+
+    <form>
+        <fieldset>
+            <legend>Scanning:</legend>
+            <h3>Description:</h3>
+            <p>Stars may scan the infrastructure and strength of enemy carriers and stars up to X+2 light years where X is scanning tech level.</p>
+            <h3>Calculator:</h3>
+            <p>Scanning Level: <input id="txtScanLevel" type="number" min="0" /><label id="lblScanLevel"></label></p>
+            <p><button type="button" onclick="ScanRangeCalc();">Calculate</button><button type="button" onclick="ScanRangeClear();">Clear</button></p>
+            <hr />
+            <p>Scan Range: <input id="txtScanRangeLY" type="text" readonly="true"/></p>
+        </fieldset>
+    </form>
+
+    <form>
+        <fieldset>
+            <legend>Hyperspace Range:</legend>
+            <h3>Description:</h3>
+            <p>Carriers may make hyperspace jumps up to X+3 light years where X is hyperspace range tech level.</p>
+            <h3>Calculator:</h3>
+            <p>Hyperspace Range Level: <input id="txtHyperspaceRangeLevel" type="number" min="0" /><label id="lblHyperspaceRangeLevel"></label></p>
+            <p><button type="button" onclick="HyperspaceRangeCalc();">Calculate</button><button type="button" onclick="HyperspaceRangeClear();">Clear</button></p>
+            <hr />
+            <p>Hyperspace Jump Range: <input id="txtHyperspaceRangeLY" type="text" readonly="true"/></p>
+        </fieldset>
+    </form>
+
+    <form>
+        <fieldset>
+            <legend>Terraforming:</legend>
+            <h3>Description:</h3>
+            <p>All your stars natural resources are improved to (X*5)+Y where X [is the] terraforming level tech and Y is the stars natural state.</p>
+            <h3>Calculator:</h3>
+            <p>Terraforming Level: <input id="txtTerraformingLevel" type="number" min="0" /><label id="lblTerraformingLevel"></label></p>
+            <p>Planet's Natural Resources: <input id="txtNaturalResources" type="number" min="0" /><label id="lblNaturalResources"></label></p>
+            <p><button type="button" onclick="TerraformingCalc();">Calculate</button><button type="button" onclick="TerraformingClear();">Clear</button></p>
+            <hr />
+            <p>Terraformed Resources: <input id="txtTerraformedResources" type="text" readonly="true"/></p>
+        </fieldset>
+    </form>
+
+    <form>
+        <fieldset>
+            <legend>Experimentation:</legend>
+            <h3>Description:</h3>
+            <p>At the end of each production cycle your scientists will conduct experiments that will unlock X*72 points of research in a random technology where X is your experimentation tech level.</p>
+            <h3>Calculator:</h3>
+            <p>Experimentation Level: <input id="txtExperimentationLevel" type="number" min="0" /><label id="lblExperimentationLevel"></label></p>
+            <p><button type="button" onclick="ExperimentationCalc();">Calculate</button><button type="button" onclick="ExperimentationClear();">Clear</button></p>
+            <hr />
+            <p>Bonus Research: <input id="txtResearchBonus" type="text" readonly="true"/></p>
+        </fieldset>
+    </form>
+
+    <form>
+        <fieldset>
+            <legend>Weapons:</legend>
+            <h3>Description:</h3>
+            <p>Ships deal X damage each round of combat where X is weapons tech level.</p>
+        </fieldset>
+    </form>
+
+    <form>
+        <fieldset>
+            <legend>Banking:</legend>
+            <h3>Description:</h3>
+            <p>At the end of each production cycle you earn an additional X*$75 where X is banking tech level.</p>
+            <h3>Calculator:</h3>
+            <p>Banking Level: <input id="txtBankingLevel" type="number" min="0" /><label id="lblBankingLevel"></label></p>
+            <p><button type="button" onclick="BankingCalc();">Calculate</button><button type="button" onclick="BankingClear();">Clear</button></p>
+            <hr />
+            <p>Bonus Income: <input id="txtIncomeBonus" type="text" readonly="true"/></p>
+        </fieldset>
+    </form>
+
+    <form>
+        <fieldset>
+            <legend>Manufacturing:</legend>
+            <h3>Description:</h3>
+            <p>A star produces Y*(X+5) ships every 24 hours where X is your manufacturing tech level and Y is the amount of industry at a star.</p>
+            <h3>Calculator:</h3>
+            <p>Manufacturing Level: <input id="txtManufacturingLevel" type="number" min="0" /><label id="lblManufacturingLevel"></label></p>
+            <p>Star Industry: <input id="txtStarIndustry" type="number" min="0" /><label id="lblStarIndustry"></label></p>
+            <p><button type="button" onclick="ManufacturingCalc();">Calculate</button><button type="button" onclick="ManufacturingClear();">Clear</button></p>
+            <hr />
+            <p>Ships per Hour: <input id="txtShipsPerHour" type="text" readonly="true"/></p>
+        </fieldset>
+    </form>
+</body>
+    <script src="np2.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</html>
